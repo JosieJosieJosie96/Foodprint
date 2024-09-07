@@ -102,7 +102,24 @@ class QRPage(Screen):
             )
         switch_button.bind(on_press=self.switch_to_home_page)
 
+        camera_button = Button(
+            size_hint=(0.12, 0.13),
+            size=(50, 50),
+            pos_hint={'center_x': 0.5, 'center_y': 0.1},
+            bold=True,
+            background_normal='CameraIcon2.png',
+        )
+
+        describe_button = Button(
+            text="Scan QR-Code",
+            size_hint=(0.5, 0.1),
+            pos_hint={'center_x': 0.5, 'center_y': 0.95},
+            background_color=(1, 1, 1, 1),
+        )
+
         layout.add_widget(switch_button)
+        layout.add_widget(camera_button)
+        layout.add_widget(describe_button)
         self.add_widget(layout)
 
     def switch_to_home_page(self, instance):
