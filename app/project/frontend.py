@@ -26,7 +26,7 @@ class HomePage(Screen):
         layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical', padding=(20, 50, 20, 20), spacing=20)
         
         content = Label(
-            text="Page 1 - Your Carbon Emissions",
+            text="Your Carbon Emissions",
             font_size=32,
             bold=True,
             color=(0, 0, 0, 1),
@@ -89,7 +89,7 @@ class QRPage(Screen):
         super().__init__(**kwargs)
         layout = BackgroundColor(color=[0.5, 1, 0.5, 1], orientation='vertical')
 
-        content = Label(text="Page 2 - Light Green")
+        content = Label(text="QR Scanner")
         switch_button = Button(
             text="Go to Home Screen",
             size_hint=(0.3, 0.1),
@@ -111,9 +111,17 @@ class QRPage(Screen):
 class SearchPage(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical')
+        layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical', padding=(20, 50, 20, 20), spacing=20)
 
-        content = Label(text="Page 3 - Search Bar")
+        content = Label(
+            text="Search Page",
+            font_size=32,
+            bold=True,
+            color=(0, 0, 0, 1),
+            size_hint=(1, None),  # Ensure the label doesn't stretch vertically
+            height=50,  # Set the height of the label
+            pos_hint={'top': 1}
+        )
         switch_button = Button(
             text="Go to Home Screen",
             size_hint=(0.3, 0.1),
@@ -129,7 +137,7 @@ class SearchPage(Screen):
             pos_hint={'center_x': 0.5},
         )
         submit_button = Button(
-            text="Eingabe abschicken",
+            text="Search",
             size_hint=(0.3, 0.1),
             size=(200, 50),
             pos_hint={'center_x': 0.5},
@@ -137,11 +145,20 @@ class SearchPage(Screen):
         )
         submit_button.bind(on_press=self.on_submit)
 
-        self.output_label = Label(text='Deine Eingabe wird hier angezeigt')
+        alternatives_button = Button(
+            text="Alternatives",
+            size_hint=(0.3, 0.1),
+            size=(200, 50),
+            pos_hint={'center_x': 0.5},
+            background_color =(1, 0.75, 0.8, 1),
+            )
+
+        self.output_label = Label(text='Results:')
         
         layout.add_widget(content)
         layout.add_widget(switch_button)
         layout.add_widget(submit_button)
+        layout.add_widget(alternatives_button)
         layout.add_widget(self.text_input)
         layout.add_widget(self.output_label)
         self.add_widget(layout)
