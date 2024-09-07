@@ -132,8 +132,8 @@ class SearchPage(Screen):
         switch_button.bind(on_press=self.switch_to_home_page)
         self.text_input = TextInput(
             hint_text='Gib hier etwas ein',  # Platzhaltertext
-            multiline=True,
-            size_hint=(0.5, 0.5),  # Größe des TextInput
+            multiline=False,
+            size_hint=(0.5, 0.2),  # Größe des TextInput
             pos_hint={'center_x': 0.5},
         )
         submit_button = Button(
@@ -171,7 +171,7 @@ class SearchPage(Screen):
         # Hol den Text vom TextInput
         user_input = self.text_input.text
         # Setze den Text im Label auf den Input-Text
-        self.output_label.text = f"Du hast eingegeben: {user_input}"
+        self.output_label.text = f"{user_input}"
 
 # Second page (screen) for demonstration
 class SecondPage(Screen):
