@@ -53,6 +53,7 @@ class HomePage(Screen):
             size=(50, 30), 
             pos_hint={'center_x': 0.5, 'bottom': 1}, 
             background_color =(1, 0.75, 0.8, 1),
+            bold=True
             )
         search_button.bind(on_press=self.go_to_search_page)
         
@@ -62,6 +63,7 @@ class HomePage(Screen):
             size=(50, 30), 
             pos_hint={'center_x': 0.5, 'bottom': 1}, 
             background_color =(0.5, 1, 0.5, 1),
+            bold=True
             )
         second_button.bind(on_press=self.go_to_second_page)
         
