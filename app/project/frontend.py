@@ -4,6 +4,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.graphics import Color, Rectangle
+from kivy.uix.textinput import TextInput
 
 # BackgroundColor class to set the background color
 class BackgroundColor(BoxLayout):
@@ -118,14 +119,38 @@ class SearchPage(Screen):
             background_color =(0.8, 0.6, 0.8, 1),
             )
         switch_button.bind(on_press=self.switch_to_home_page)
+        self.text_input = TextInput(
+            hint_text='Gib hier etwas ein',  # Platzhaltertext
+            multiline=False,  # Eine Zeile
+            size_hint=(1, 0.5)  # Größe des TextInput
+        )
+        submit_button = Button(
+            text="Eingabe abschicken",
+            size_hint=(0.3, 0.1),
+            size=(200, 50),
+            pos_hint={'center_x': 0.5},
+            background_color =(1, 0.75, 0.8, 1),
+        )
+        submit_button.bind(on_press=self.on_submit)
+
+        self.output_label = Label(text='Deine Eingabe wird hier angezeigt')
         
         layout.add_widget(content)
         layout.add_widget(switch_button)
+        layout.add_widget(submit_button)
+        layout.add_widget(self.text_input)
+        layout.add_widget(self.output_label)
         self.add_widget(layout)
 
     def switch_to_home_page(self, instance):
         if self.manager:
             self.manager.current = 'home'
+
+    def on_submit(self, instance):
+        # Hol den Text vom TextInput
+        user_input = self.text_input.text
+        # Setze den Text im Label auf den Input-Text
+        self.output_label.text = f"Du hast eingegeben: {user_input}"
 
 # Second page (screen) for demonstration
 class SecondPage(Screen):
