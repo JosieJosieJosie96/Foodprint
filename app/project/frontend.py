@@ -122,8 +122,9 @@ class SearchPage(Screen):
         switch_button.bind(on_press=self.switch_to_home_page)
         self.text_input = TextInput(
             hint_text='Gib hier etwas ein',  # Platzhaltertext
-            multiline=False,  # Eine Zeile
-            size_hint=(1, 0.5)  # Größe des TextInput
+            multiline=True,
+            size_hint=(0.5, 0.5),  # Größe des TextInput
+            pos_hint={'center_x': 0.5},
         )
         submit_button = Button(
             text="Eingabe abschicken",
