@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import LandingPage
+from .serializers import LandingPageSerializer
 
-# Create your views here.
+class LandingPageViewSet(viewsets.ModelViewSet):
+    queryset = LandingPage.objects.all()
+    serializer_class = LandingPageSerializer
