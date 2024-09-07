@@ -94,11 +94,11 @@ class QRPage(Screen):
         """
         
         switch_button = Button(
-            text="Go to Home Screen",
-            size_hint=(0.1, 0.1),
+            size_hint=(0.12, 0.13),
             size=(50, 50),
-            pos_hint={'center_x': 0.5},
-            background_color =(0.8, 0.6, 0.8, 1),
+            pos_hint={'center_x': 0.95, 'center_y': 0.95},
+            bold=True,
+            background_normal='Rightarrow.png',
             )
         switch_button.bind(on_press=self.switch_to_home_page)
 
