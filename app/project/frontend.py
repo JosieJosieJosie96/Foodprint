@@ -209,33 +209,33 @@ class SearchPage(Screen):
         submit_button.bind(on_press=self.on_submit)
 
         # Position buttons in the middle of the y-axis
-        switch_button.pos_hint = {'center_x': 0.2, 'center_y': 0.97}
-        self.text_input.pos_hint = {'center_x': 0.8, 'center_y': 0.97}
-        submit_button.pos_hint = {'center_x': 0.9, 'center_y': 0.97}
+        # switch_button.pos_hint = {'center_x': 0.2, 'center_y': 0.97}
+        # self.text_input.pos_hint = {'center_x': 0.8, 'center_y': 0.97}
+        # submit_button.pos_hint = {'center_x': 0.9, 'center_y': 0.97}
 
-        # Create a GridLayout with 7 columns
-        grid_layout = GridLayout(
-            cols=7,  # Number of columns
-            rows=2,  # Number of rows
-            size_hint=(None, None),  # Size will be set explicitly
-            size=(700, 80),  # Width and height of the grid layout
-            spacing=(100, 200)  # Spacing between cells
-        )
+        # # Create a GridLayout with 7 columns
+        # grid_layout = GridLayout(
+        #     cols=7,  # Number of columns
+        #     rows=2,  # Number of rows
+        #     size_hint=(None, None),  # Size will be set explicitly
+        #     size=(700, 80),  # Width and height of the grid layout
+        #     spacing=(100, 200)  # Spacing between cells
+        # )
 
-        # Add labels to the GridLayout
-        headers = ['Name', 'Energy (kCal) per 100g', 'Protein per 100g', 'Fats', 'Carbohydrates', 'Fiber', 'CO2']
-        for header in headers:
-            grid_layout.add_widget(Label(text=header, size_hint=(None, None), size=(100, 40), halign='center'))
+        # # Add labels to the GridLayout
+        # headers = ['Name', 'Energy (kCal) per 100g', 'Protein per 100g', 'Fats', 'Carbohydrates', 'Fiber', 'CO2']
+        # for header in headers:
+        #     grid_layout.add_widget(Label(text=header, size_hint=(None, None), size=(100, 40), halign='center'))
 
-        # Add empty labels to fill the second row (can be customized)
-        for _ in range(7):
-            grid_layout.add_widget(Label(size_hint=(None, None), size=(100, 40)))
+        # # Add empty labels to fill the second row (can be customized)
+        # for _ in range(7):
+        #     grid_layout.add_widget(Label(size_hint=(None, None), size=(100, 40)))
 
-        # Center the GridLayout in the FloatLayout
-        grid_layout.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
+        # # Center the GridLayout in the FloatLayout
+        # grid_layout.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
 
-        # Add the GridLayout to the FloatLayout
-        layout.add_widget(grid_layout)
+        # # Add the GridLayout to the FloatLayout
+        # layout.add_widget(grid_layout)
 
         # alternatives_button = Button(
         #     text="Alternatives",
@@ -257,7 +257,7 @@ class SearchPage(Screen):
         # layout.add_widget(content)
         layout.add_widget(self.text_input)
         layout.add_widget(submit_button)
-        layout.add_widget(grid_layout)
+        # layout.add_widget(grid_layout)
         # layout.add_widget(alternatives_button)
         # layout.add_widget(self.output_label)
         self.add_widget(layout)
