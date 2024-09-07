@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Didyouknow(models.Model):
     comparison_product = models.CharField(max_length=255)
     fact = models.TextField()
