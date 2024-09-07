@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'DidYouKnow',
+    'LandingPage',
+    'rest_framework_swagger',
+    'rest_framework',
+    'drf_yasg',
+
 ]
 
 MIDDLEWARE = [
@@ -49,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'DidYouKnow.urls'
 
 TEMPLATES = [
     {
