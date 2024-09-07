@@ -55,7 +55,7 @@ class HomePage(Screen):
         layout.add_widget(background_image2)
 
         background_image1_description = Button(
-            text="So much of your carbon emissions you have used up this year.",
+            text="This is how much of your carbon emissions you have used up so far this year.",
             size_hint=(0.5, 0.1),
             pos_hint={'center_x': 0.75, 'center_y': 0.4},
             background_color=(1, 1, 1, 1),
@@ -71,7 +71,7 @@ class HomePage(Screen):
         layout.add_widget(background_image1_description)
 
         background_image1_description = Button(
-            text="You are great. You're well on your way to emitting significantly less CO2 this year than would be harmful to the earth.",
+            text="You are great. You're well on your way to emitting a below average level of CO2 this year.",
             size_hint=(0.99, 0.1),
             pos_hint={'center_x': 0.5, 'center_y': 0.2},
             background_color=(1, 1, 1, 1),
