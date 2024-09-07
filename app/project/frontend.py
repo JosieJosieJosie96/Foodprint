@@ -28,10 +28,10 @@ class HomePage(Screen):
         layout.add_widget(content)
         
         # Create buttons for navigation
-        qr_button = Button(text="Go to QR Page")
+        qr_button = Button(text="Go to QR Scanner")
         qr_button.bind(on_press=self.go_to_qr_page)
         
-        search_button = Button(text="Go to Search Page")
+        search_button = Button(text="Go to Search Tool")
         search_button.bind(on_press=self.go_to_search_page)
         
         second_button = Button(text="Go to Second Page")
