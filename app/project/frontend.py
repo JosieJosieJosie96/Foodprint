@@ -237,21 +237,21 @@ class SearchPage(Screen):
         # # Add the GridLayout to the FloatLayout
         # layout.add_widget(grid_layout)
 
-        # alternatives_button = Button(
-        #     text="Alternatives",
-        #     size_hint=(None, None),
-        #     size=(100, 50),
-        #     background_color =(1, 0.75, 0.8, 1),
-        # )
+        alternatives_button = Button(
+            text="Alternatives",
+            size_hint=(None, None),
+            size=(100, 50),
+            background_color =(1, 0.75, 0.8, 1),
+        )
 
-        # alternatives_button.pos_hint = {'center_x': 0.1, 'center_y': 0.4}
+        alternatives_button.pos_hint = {'center_x': 0.1, 'center_y': 0.4}
 
-        # self.output_label = Label(
-        #     text='Results:',
-        #     size_hint=(None, None),
-        #     size=(200, 50),
-        #     pos_hint={'center': 1, 'y': 0.4}
-        # )
+        self.output_label = Label(
+            text='Results:',
+            size_hint=(None, None),
+            size=(200, 50),
+            pos_hint={'center': 1, 'y': 0.4}
+        )
         
         layout.add_widget(switch_button)
         # layout.add_widget(content)
