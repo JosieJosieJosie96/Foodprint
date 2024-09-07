@@ -78,7 +78,13 @@ class QRPage(Screen):
         layout = BackgroundColor(color=[0.5, 1, 0.5, 1], orientation='vertical')
 
         content = Label(text="Page 2 - Light Green")
-        switch_button = Button(text="Go to Home Page")
+        switch_button = Button(
+            text="Go to Home Screen",
+            size_hint=(0.3, 0.1),
+            size=(200, 50),
+            pos_hint={'center_x': 0.5},
+            background_color =(0.8, 0.6, 0.8, 1),
+            )
         switch_button.bind(on_press=self.switch_to_home_page)
         
         layout.add_widget(content)
@@ -96,7 +102,13 @@ class SearchPage(Screen):
         layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical')
 
         content = Label(text="Page 3 - Search Bar")
-        switch_button = Button(text="Go to Home Page")
+        switch_button = Button(
+            text="Go to Home Screen",
+            size_hint=(0.3, 0.1),
+            size=(200, 50),
+            pos_hint={'center_x': 0.5},
+            background_color =(0.8, 0.6, 0.8, 1),
+            )
         switch_button.bind(on_press=self.switch_to_home_page)
         
         layout.add_widget(content)
@@ -115,7 +127,13 @@ class SecondPage(Screen):
         layout = BoxLayout(orientation='vertical')
         layout.add_widget(Label(text="This is the second page"))
         
-        switch_button = Button(text="Go to Home Page")
+        switch_button = Button(
+            text="Go to Home Screen",
+            size_hint=(0.3, 0.1),
+            size=(200, 50),
+            pos_hint={'center_x': 0.5},
+            background_color =(0.8, 0.6, 0.8, 1),
+            )
         switch_button.bind(on_press=self.switch_to_home_page)
         
         layout.add_widget(switch_button)
