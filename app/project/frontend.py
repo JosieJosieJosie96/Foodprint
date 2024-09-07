@@ -210,16 +210,46 @@ class SearchPage(Screen):
         )
         submit_button.bind(on_press=self.on_submit)
 
-        comparisontable = Image(source='ComparisonTable.png',
+        SearchOutput1 = Image(source='SearchOutput.png',
                                        allow_stretch=True,
                                        keep_ratio=False,
-                                       size_hint=(0.9, 0.3),
-                                       pos_hint={'center_x': 0.5, 'center_y': 0.75})
+                                       size_hint=(0.9, 0.2),
+                                       pos_hint={'center_x': 0.5, 'center_y': 0.8})
+
+        alt_button1 = Button(
+            text="Alternatives",
+            size_hint=(0.2, 0.1),
+            background_color=(1, 0.75, 0.8, 1),
+            pos_hint={'center_x': 0.5, 'center_y': 0.65},
+        )
+
+        SearchOutput2 = Image(source='SearchOutput.png',
+                              allow_stretch=True,
+                              keep_ratio=False,
+                              size_hint=(0.9, 0.2),
+                              pos_hint={'center_x': 0.5, 'center_y': 0.5})
+
+        alt_button2 = Button(
+            text="Comparison",
+            size_hint=(0.2, 0.1),
+            background_color=(1, 0.75, 0.8, 1),
+            pos_hint={'center_x': 0.5, 'center_y': 0.35},
+        )
+
+        ComparisonTable = Image(source='ComparisonTable.png',
+                              allow_stretch=True,
+                              keep_ratio=False,
+                              size_hint=(0.9, 0.3),
+                              pos_hint={'center_x': 0.5, 'center_y': 0.15})
 
         layout.add_widget(switch_button)
         layout.add_widget(self.text_input)
         layout.add_widget(submit_button)
-        layout.add_widget(comparisontable)
+        layout.add_widget(SearchOutput1)
+        layout.add_widget(alt_button1)
+        layout.add_widget(SearchOutput2)
+        layout.add_widget(alt_button2)
+        layout.add_widget(ComparisonTable)
         self.add_widget(layout)
 
     def switch_to_home_page(self, instance):
