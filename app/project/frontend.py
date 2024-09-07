@@ -22,6 +22,22 @@ class BackgroundColor(BoxLayout):
         self.rect.pos = self.pos
         self.rect.size = self.size
 
+
+class ColoredBackgroundLayout(FloatLayout):
+    def __init__(self, **kwargs):
+        super(ColoredBackgroundLayout, self).__init__(**kwargs)
+
+        with self.canvas.before:
+            Color(0.5, 1, 0.5, 1)  # Setzt die Hintergrundfarbe (RGBA) auf Hellgrün
+            self.rect = Rectangle(size=self.size, pos=self.pos)
+
+        # Stelle sicher, dass das Rechteck die Größe des Layouts hat
+        self.bind(size=self._update_rect, pos=self._update_rect)
+
+    def _update_rect(self, *args):
+        self.rect.size = self.size
+        self.rect.pos = self.pos
+
 # Homepage with navigation buttons
 class HomePage(Screen):
     def __init__(self, **kwargs):
@@ -168,10 +184,9 @@ class QRPage(Screen):
 class SearchPage(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BackgroundColor(color=[0.5, 0.5, 1, 1])
+        layout = ColoredBackgroundLayout()
         switch_button = Button(
-            size_hint=(None, None),
-            size=(100, 100),
+            size_hint=(0.1, 0.1),
             pos_hint={'center_x': 0.05, 'center_y': 0.95},
             bold=True,
             background_normal='Leftarrow.png',
@@ -182,24 +197,59 @@ class SearchPage(Screen):
         self.text_input = TextInput(
             hint_text='Search by Product..',
             multiline=False,
-            size_hint=(None, None),
-            size=(1000, 40),
-            pos_hint={'center_x': 0.15, 'center_y': 0.95},
+            size_hint=(0.8, 0.1),
+            pos_hint={'center_x': 0.5, 'center_y': 0.95},
         )
         self.text_input.bind(on_text_validate=self.on_submit)
 
         submit_button = Button(
             text="Search",
-            size_hint=(None, None),
-            size=(100, 50),
+            size_hint=(0.1, 0.1),
             background_color =(1, 0.75, 0.8, 1),
-            pos_hint={'center_x': 0.85, 'center_y': 0.95},
+            pos_hint={'center_x': 0.95, 'center_y': 0.95},
         )
         submit_button.bind(on_press=self.on_submit)
-        
+
+        SearchOutput1 = Image(source='SearchOutput.png',
+                                       allow_stretch=True,
+                                       keep_ratio=False,
+                                       size_hint=(0.9, 0.2),
+                                       pos_hint={'center_x': 0.5, 'center_y': 0.8})
+
+        alt_button1 = Button(
+            text="Alternatives",
+            size_hint=(0.2, 0.1),
+            background_color=(1, 0.75, 0.8, 1),
+            pos_hint={'center_x': 0.5, 'center_y': 0.65},
+        )
+
+        SearchOutput2 = Image(source='SearchOutput.png',
+                              allow_stretch=True,
+                              keep_ratio=False,
+                              size_hint=(0.9, 0.2),
+                              pos_hint={'center_x': 0.5, 'center_y': 0.5})
+
+        alt_button2 = Button(
+            text="Comparison",
+            size_hint=(0.2, 0.1),
+            background_color=(1, 0.75, 0.8, 1),
+            pos_hint={'center_x': 0.5, 'center_y': 0.35},
+        )
+
+        ComparisonTable = Image(source='ComparisonTable.png',
+                              allow_stretch=True,
+                              keep_ratio=False,
+                              size_hint=(0.9, 0.3),
+                              pos_hint={'center_x': 0.5, 'center_y': 0.15})
+
         layout.add_widget(switch_button)
         layout.add_widget(self.text_input)
         layout.add_widget(submit_button)
+        layout.add_widget(SearchOutput1)
+        layout.add_widget(alt_button1)
+        layout.add_widget(SearchOutput2)
+        layout.add_widget(alt_button2)
+        layout.add_widget(ComparisonTable)
         self.add_widget(layout)
 
     def switch_to_home_page(self, instance):
