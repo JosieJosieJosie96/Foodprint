@@ -1,6 +1,5 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.pagelayout import PageLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.label import Label
@@ -19,64 +18,76 @@ class BackgroundColor(BoxLayout):
         self.rect.pos = self.pos
         self.rect.size = self.size
 
-# Homepage with emissions overview
+# Homepage with navigation buttons
 class HomePage(Screen):
-    def __init__(self, color, content, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BackgroundColor(color=color, orientation='vertical')
+        layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical')
+        
+        content = Label(text="Page 1 - Your Carbon Emissions")
         layout.add_widget(content)
+        
+        # Create buttons for navigation
+        qr_button = Button(text="Go to QR Page")
+        qr_button.bind(on_press=self.go_to_qr_page)
+        
+        search_button = Button(text="Go to Search Page")
+        search_button.bind(on_press=self.go_to_search_page)
+        
+        second_button = Button(text="Go to Second Page")
+        second_button.bind(on_press=self.go_to_second_page)
+        
+        # Add buttons to layout
+        layout.add_widget(qr_button)
+        layout.add_widget(search_button)
+        layout.add_widget(second_button)
+        
         self.add_widget(layout)
+    
+    def go_to_qr_page(self, instance):
+        self.manager.current = 'qr'
+    
+    def go_to_search_page(self, instance):
+        self.manager.current = 'search'
+    
+    def go_to_second_page(self, instance):
+        self.manager.current = 'second'
 
 # QR Code Scanner Page
 class QRPage(Screen):
-    def __init__(self, color, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BackgroundColor(color=color, orientation='vertical')
+        layout = BackgroundColor(color=[0.5, 1, 0.5, 1], orientation='vertical')
 
-        content=Label(text="Page 2 - Light Green")
-
-        switch_button = Button(text="Go to Second Page")
-        switch_button.bind(on_press=self.switch_to_second_page)
+        content = Label(text="Page 2 - Light Green")
+        switch_button = Button(text="Go to Home Page")
+        switch_button.bind(on_press=self.switch_to_home_page)
         
         layout.add_widget(content)
         layout.add_widget(switch_button)
         self.add_widget(layout)
 
-    def switch_to_second_page(self, instance):
+    def switch_to_home_page(self, instance):
         if self.manager:
-            self.manager.current = 'second'
+            self.manager.current = 'home'
 
 # Search Bar Page
 class SearchPage(Screen):
-    def __init__(self, color, **kwargs):
-        super().__init__(**kwargs)
-        layout = BackgroundColor(color=color, orientation='vertical')
-
-        content=Label(text="Page 3 - Search Bar")
-
-        layout.add_widget(content)
-        self.add_widget(layout)
-
-# First page (screen) with its own background color
-class FirstPage(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        
-        # PageLayout to hold two pages
-        layout = PageLayout()
-        
-        # Create two pages with different background colors
-        page1 = HomePage(color=[0.5, 0.5, 1, 1], content=Label(text="Page 1 - Your Carbon Emissions"))
-        page2 = QRPage(color=[0.5, 1, 0.5, 1])
-        page3 = SearchPage(color=[0.5, 0.5, 1, 1])
+        layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical')
 
-        # Add pages to PageLayout
-        layout.add_widget(page1)
-        layout.add_widget(page2)
-        layout.add_widget(page3)
+        content = Label(text="Page 3 - Search Bar")
+        switch_button = Button(text="Go to Home Page")
+        switch_button.bind(on_press=self.switch_to_home_page)
         
-        # Add PageLayout to the FirstPage screen
+        layout.add_widget(content)
+        layout.add_widget(switch_button)
         self.add_widget(layout)
+
+    def switch_to_home_page(self, instance):
+        if self.manager:
+            self.manager.current = 'home'
 
 # Second page (screen) for demonstration
 class SecondPage(Screen):
@@ -86,22 +97,24 @@ class SecondPage(Screen):
         layout = BoxLayout(orientation='vertical')
         layout.add_widget(Label(text="This is the second page"))
         
-        switch_button = Button(text="Go to First Page")
-        switch_button.bind(on_press=self.switch_to_first_page)
+        switch_button = Button(text="Go to Home Page")
+        switch_button.bind(on_press=self.switch_to_home_page)
         
         layout.add_widget(switch_button)
         self.add_widget(layout)
 
-    def switch_to_first_page(self, instance):
+    def switch_to_home_page(self, instance):
         if self.manager:
-            self.manager.current = 'first'
+            self.manager.current = 'home'
 
 # Screen manager to handle multiple pages
 class MyScreenManager(ScreenManager):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Add the screens to the ScreenManager
-        self.add_widget(FirstPage(name='first'))
+        self.add_widget(HomePage(name='home'))
+        self.add_widget(QRPage(name='qr'))
+        self.add_widget(SearchPage(name='search'))
         self.add_widget(SecondPage(name='second'))
 
 # Main application class
