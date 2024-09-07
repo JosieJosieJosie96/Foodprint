@@ -45,12 +45,14 @@ class HomePage(Screen):
 
         # Create buttons for navigation
         qr_button = Button(
-            text="QR Scanner",
-            size_hint=(0.2, 0.1),
-            size=(50, 30),
-            background_color=(0.8, 0.6, 0.8, 1),
-            bold=True
+            # text="QR Scanner",
+            size_hint=(0.12, 0.13),
+            size=(50, 50),
+            # background_color=(0.8, 0.6, 0.8, 1),
+            bold=True,
+            background_normal = 'cameraIcon.png',
         )
+        
         qr_button.bind(on_press=self.go_to_qr_page)
 
         search_button = Button(
