@@ -28,13 +28,31 @@ class HomePage(Screen):
         layout.add_widget(content)
         
         # Create buttons for navigation
-        qr_button = Button(text="Go to QR Scanner")
+        qr_button = Button(
+            text="QR Scanner", 
+            size_hint=(0.3, 0.1), 
+            size=(200, 50), 
+            pos_hint={'center_x': 0.5}, 
+            background_color =(0.8, 0.6, 0.8, 1),
+            )
         qr_button.bind(on_press=self.go_to_qr_page)
         
-        search_button = Button(text="Go to Search Tool")
+        search_button = Button(
+            text="Search Tool", 
+            size_hint=(0.3, 0.1), 
+            size=(200, 50), 
+            pos_hint={'center_x': 0.5}, 
+            background_color =(1, 0.75, 0.8, 1),
+            )
         search_button.bind(on_press=self.go_to_search_page)
         
-        second_button = Button(text="Go to Second Page")
+        second_button = Button(
+            text="Second Page", 
+            size_hint=(0.3, 0.1), 
+            size=(200, 50), 
+            pos_hint={'center_x': 0.5}, 
+            background_color =(0.5, 1, 0.5, 1),
+            )
         second_button.bind(on_press=self.go_to_second_page)
         
         # Add buttons to layout
