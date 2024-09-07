@@ -28,34 +28,37 @@ class HomePage(Screen):
             text="Page 1 - Your Carbon Emissions",
             font_size=32,
             bold=True,
-            color=(0, 0, 0, 1)
+            color=(0, 0, 0, 1),
+            size_hint=(1, None),  # Ensure the label doesn't stretch vertically
+            height=50,  # Set the height of the label
+            pos_hint={'top': 1}  # Align the label to the top of the parent layout
             )
         layout.add_widget(content)
         
         # Create buttons for navigation
         qr_button = Button(
             text="QR Scanner", 
-            size_hint=(0.3, 0.1), 
-            size=(200, 50), 
-            pos_hint={'center_x': 0.5}, 
+            size_hint=(0.2, 0.2), 
+            size=(50, 50), 
+            pos_hint={'center_x': 0.5, 'bottom': 1}, 
             background_color =(0.8, 0.6, 0.8, 1),
             )
         qr_button.bind(on_press=self.go_to_qr_page)
         
         search_button = Button(
             text="Search Tool", 
-            size_hint=(0.3, 0.1), 
-            size=(200, 50), 
-            pos_hint={'center_x': 0.5}, 
+            size_hint=(0.2, 0.2), 
+            size=(50, 50), 
+            pos_hint={'center_x': 0.5, 'bottom': 1}, 
             background_color =(1, 0.75, 0.8, 1),
             )
         search_button.bind(on_press=self.go_to_search_page)
         
         second_button = Button(
             text="Second Page", 
-            size_hint=(0.3, 0.1), 
-            size=(200, 50), 
-            pos_hint={'center_x': 0.5}, 
+            size_hint=(0.2, 0.2), 
+            size=(50, 50), 
+            pos_hint={'center_x': 0.5, 'bottom': 1}, 
             background_color =(0.5, 1, 0.5, 1),
             )
         second_button.bind(on_press=self.go_to_second_page)
