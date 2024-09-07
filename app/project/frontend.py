@@ -128,6 +128,7 @@ class SearchPage(Screen):
             size_hint=(0.5, 0.2),  # Größe des TextInput
             pos_hint={'center_x': 0.5},
         )
+        self.text_input.bind(on_text_validate=self.on_submit)
         submit_button = Button(
             text="Eingabe abschicken",
             size_hint=(0.3, 0.1),
