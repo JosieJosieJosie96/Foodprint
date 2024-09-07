@@ -257,8 +257,9 @@ class SearchPage(Screen):
             self.manager.current = 'home'
 
     def on_submit(self, instance):
-        user_input = self.text_input.text
-        self.output_label.text = f"{user_input}"
+        pass
+        # user_input = self.text_input.text
+        # self.output_label.text = f"{user_input}"
 
 # Second page (screen) for demonstration
 from kivy.uix.floatlayout import FloatLayout
