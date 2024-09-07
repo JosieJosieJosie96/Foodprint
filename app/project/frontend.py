@@ -46,7 +46,7 @@ class HomePage(Screen):
         # Create buttons for navigation
         qr_button = Button(
             # text="QR Scanner",
-            size_hint=(0.12, 0.13),
+            size_hint=(0.1, 0.1),
             size=(50, 50),
             # background_color=(0.8, 0.6, 0.8, 1),
             bold=True,
@@ -56,11 +56,12 @@ class HomePage(Screen):
         qr_button.bind(on_press=self.go_to_qr_page)
 
         search_button = Button(
-            text="Search Tool",
-            size_hint=(0.2, 0.1),
+            # text="Search Tool",
+            size_hint=(0.1, 0.1),
             size=(50, 30),
             background_color=(1, 0.75, 0.8, 1),
-            bold=True
+            bold=True,
+            background_normal = 'searchIcon.png'
         )
         search_button.bind(on_press=self.go_to_search_page)
 
@@ -102,7 +103,24 @@ class QRPage(Screen):
             )
         switch_button.bind(on_press=self.switch_to_home_page)
 
+        camera_button = Button(
+            size_hint=(0.12, 0.13),
+            size=(50, 50),
+            pos_hint={'center_x': 0.5, 'center_y': 0.1},
+            bold=True,
+            background_normal='CameraIcon2.png',
+        )
+
+        describe_button = Button(
+            text="Scan QR-Code",
+            size_hint=(0.5, 0.1),
+            pos_hint={'center_x': 0.5, 'center_y': 0.95},
+            background_color=(1, 1, 1, 1),
+        )
+
         layout.add_widget(switch_button)
+        layout.add_widget(camera_button)
+        layout.add_widget(describe_button)
         self.add_widget(layout)
 
     def switch_to_home_page(self, instance):
