@@ -7,6 +7,7 @@ from kivy.graphics import Color, Rectangle
 from kivy.uix.textinput import TextInput
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
+from kivy.uix.gridlayout import GridLayout
 
 # BackgroundColor class to set the background color
 class BackgroundColor(BoxLayout):
@@ -131,57 +132,98 @@ class QRPage(Screen):
 class SearchPage(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical', padding=(20, 50, 20, 20), spacing=20)
+        layout = BackgroundColor(color=[0.5, 0.5, 1, 1])
 
-        content = Label(
-            text="Search Page",
-            font_size=32,
-            bold=True,
-            color=(0, 0, 0, 1),
-            size_hint=(1, None),  # Ensure the label doesn't stretch vertically
-            height=50,  # Set the height of the label
-            pos_hint={'top': 1}
-        )
+        # Create the label and button at the top
+        # content = Label(
+        #     text="Search Page",
+        #     font_size=32,
+        #     bold=True,
+        #     color=(0, 0, 0, 1),
+        #     size_hint=(None, None),
+        #     size=(200, 50),
+        #     pos_hint={'center_x': 0.5, 'top': 1}  # Top left corner
+        # )
         switch_button = Button(
             text="Go to Home Screen",
-            size_hint=(0.3, 0.1),
+            size_hint=(None, None),
             size=(200, 50),
-            pos_hint={'center_x': 0.5},
             background_color =(0.8, 0.6, 0.8, 1),
-            )
+            # pos_hint={'left': 1, 'top': 1}
+        )
         switch_button.bind(on_press=self.switch_to_home_page)
+
+        # TextInput and buttons in a horizontal row
         self.text_input = TextInput(
-            hint_text='Gib hier etwas ein',  # Platzhaltertext
+            hint_text='Search by Product..',
             multiline=False,
-            size_hint=(0.5, 0.2),  # Größe des TextInput
-            pos_hint={'center_x': 0.5},
+            size_hint=(None, None),
+            size=(700, 40),
+            # pos_hint={'top': 1}
         )
         self.text_input.bind(on_text_validate=self.on_submit)
+
         submit_button = Button(
             text="Search",
-            size_hint=(0.3, 0.1),
-            size=(200, 50),
-            pos_hint={'center_x': 0.5},
+            size_hint=(None, None),
+            size=(100, 50),
             background_color =(1, 0.75, 0.8, 1),
+            # pos_hint={'right': 1, 'top': 1}
         )
         submit_button.bind(on_press=self.on_submit)
 
-        alternatives_button = Button(
-            text="Alternatives",
-            size_hint=(0.3, 0.1),
-            size=(200, 50),
-            pos_hint={'center_x': 0.5},
-            background_color =(1, 0.75, 0.8, 1),
-            )
+        # Position buttons in the middle of the y-axis
+        switch_button.pos_hint = {'center_x': 0.2, 'center_y': 0.97}
+        self.text_input.pos_hint = {'center_x': 0.8, 'center_y': 0.97}
+        submit_button.pos_hint = {'center_x': 0.9, 'center_y': 0.97}
 
-        self.output_label = Label(text='Results:')
+        # Create a GridLayout with 7 columns
+        grid_layout = GridLayout(
+            cols=7,  # Number of columns
+            rows=2,  # Number of rows
+            size_hint=(None, None),  # Size will be set explicitly
+            size=(700, 80),  # Width and height of the grid layout
+            spacing=(100, 200)  # Spacing between cells
+        )
+
+        # Add labels to the GridLayout
+        headers = ['Name', 'Energy (kCal) per 100g', 'Protein per 100g', 'Fats', 'Carbohydrates', 'Fiber', 'CO2']
+        for header in headers:
+            grid_layout.add_widget(Label(text=header, size_hint=(None, None), size=(100, 40), halign='center'))
+
+        # Add empty labels to fill the second row (can be customized)
+        for _ in range(7):
+            grid_layout.add_widget(Label(size_hint=(None, None), size=(100, 40)))
+
+        # Center the GridLayout in the FloatLayout
+        grid_layout.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
+
+        # Add the GridLayout to the FloatLayout
+        layout.add_widget(grid_layout)
+
+        # alternatives_button = Button(
+        #     text="Alternatives",
+        #     size_hint=(None, None),
+        #     size=(100, 50),
+        #     background_color =(1, 0.75, 0.8, 1),
+        # )
+
+        # alternatives_button.pos_hint = {'center_x': 0.1, 'center_y': 0.4}
+
+        # self.output_label = Label(
+        #     text='Results:',
+        #     size_hint=(None, None),
+        #     size=(200, 50),
+        #     pos_hint={'center': 1, 'y': 0.4}
+        # )
         
-        layout.add_widget(content)
         layout.add_widget(switch_button)
-        layout.add_widget(submit_button)
-        layout.add_widget(alternatives_button)
+        # layout.add_widget(content)
         layout.add_widget(self.text_input)
-        layout.add_widget(self.output_label)
+        layout.add_widget(submit_button)
+        layout.add_widget(grid_layout)
+        # layout.add_widget(alternatives_button)
+        # layout.add_widget(self.output_label)
         self.add_widget(layout)
 
     def switch_to_home_page(self, instance):
