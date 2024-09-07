@@ -6,6 +6,7 @@ from kivy.uix.label import Label
 from kivy.graphics import Color, Rectangle
 from kivy.uix.textinput import TextInput
 from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.image import Image
 
 # BackgroundColor class to set the background color
 class BackgroundColor(BoxLayout):
@@ -84,19 +85,24 @@ class HomePage(Screen):
 class QRPage(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BackgroundColor(color=[0.5, 1, 0.5, 1], orientation='vertical')
+        layout = layout = FloatLayout(size_hint=(1, 1))
 
-        content = Label(text="QR Scanner")
+        """
+        background_image = Image(source='QR_Code_1.png', allow_stretch=True, keep_ratio=False,
+                                 size_hint=(None, None), size=(400, 400),
+                                 pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        layout.add_widget(background_image)
+        """
+        
         switch_button = Button(
-            text="Go to Home Screen",
-            size_hint=(0.3, 0.1),
-            size=(200, 50),
-            pos_hint={'center_x': 0.5},
-            background_color =(0.8, 0.6, 0.8, 1),
+            size_hint=(0.12, 0.13),
+            size=(50, 50),
+            pos_hint={'center_x': 0.95, 'center_y': 0.95},
+            bold=True,
+            background_normal='Rightarrow.png',
             )
         switch_button.bind(on_press=self.switch_to_home_page)
-        
-        layout.add_widget(content)
+
         layout.add_widget(switch_button)
         self.add_widget(layout)
 
