@@ -38,7 +38,7 @@ class HomePage(Screen):
             color=(0, 0, 0, 1),
             size_hint=(1, None),
             height=50,
-            pos_hint={'top': 1}
+            pos_hint={'center_y': 0.9}
         )
         layout.add_widget(content)
 
@@ -62,8 +62,8 @@ class HomePage(Screen):
         search_button.bind(on_press=self.go_to_search_page)
 
         # Position buttons in the middle of the y-axis
-        qr_button.pos_hint = {'center_x': 0.3, 'center_y': 0.5}
-        search_button.pos_hint = {'center_x': 0.7, 'center_y': 0.5}
+        qr_button.pos_hint = {'center_x': 0.1, 'center_y': 0.9}
+        search_button.pos_hint = {'center_x': 0.9, 'center_y': 0.9}
 
         # Add buttons to layout
         layout.add_widget(qr_button)
