@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Third-party apps
+
     'rest_framework',  # Django REST Framework
     'corsheaders',  # CORS for API requests
     'drf_yasg',  # Add this line for Swagger support
