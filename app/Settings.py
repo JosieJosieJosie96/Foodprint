@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'DidYouKnow',
     'LandingPage',
 
-    # Third-party apps
+
     'rest_framework',  # Django REST Framework
     'rest_framework_swagger',
     'corsheaders',  # CORS for API requests
