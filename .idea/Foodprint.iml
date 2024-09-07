@@ -14,8 +14,11 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="C:\Users\waltr\anaconda3 (11)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="foodprint_conda" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="PackageRequirementsSettings">
+    <option name="requirementsPath" value="C:\Users\waltr\Desktop\prep work\Foodprint\app\requirements.txt" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
