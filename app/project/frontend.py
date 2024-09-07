@@ -25,7 +25,12 @@ class HomePage(Screen):
         super().__init__(**kwargs)
         layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical')
         
-        content = Label(text="Page 1 - Your Carbon Emissions")
+        content = Label(
+            text="Page 1 - Your Carbon Emissions",
+            font_size=32,
+            bold=True,
+            color=(0, 0, 0, 1)
+            )
         layout.add_widget(content)
         
         # Create buttons for navigation
