@@ -23,7 +23,7 @@ class BackgroundColor(BoxLayout):
 class HomePage(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical')
+        layout = BackgroundColor(color=[0.5, 0.5, 1, 1], orientation='vertical', padding=(20, 50, 20, 20), spacing=20)
         
         content = Label(
             text="Page 1 - Your Carbon Emissions",
@@ -39,28 +39,31 @@ class HomePage(Screen):
         # Create buttons for navigation
         qr_button = Button(
             text="QR Scanner", 
-            size_hint=(0.2, 0.2), 
-            size=(50, 50), 
+            size_hint=(0.2, 0.1), 
+            size=(50, 30), 
             pos_hint={'center_x': 0.5, 'bottom': 1}, 
             background_color =(0.8, 0.6, 0.8, 1),
+            bold=True
             )
         qr_button.bind(on_press=self.go_to_qr_page)
         
         search_button = Button(
             text="Search Tool", 
-            size_hint=(0.2, 0.2), 
-            size=(50, 50), 
+            size_hint=(0.2, 0.1), 
+            size=(50, 30), 
             pos_hint={'center_x': 0.5, 'bottom': 1}, 
             background_color =(1, 0.75, 0.8, 1),
+            bold=True
             )
         search_button.bind(on_press=self.go_to_search_page)
         
         second_button = Button(
             text="Second Page", 
-            size_hint=(0.2, 0.2), 
-            size=(50, 50), 
+            size_hint=(0.2, 0.1), 
+            size=(50, 30), 
             pos_hint={'center_x': 0.5, 'bottom': 1}, 
             background_color =(0.5, 1, 0.5, 1),
+            bold=True
             )
         second_button.bind(on_press=self.go_to_second_page)
         
