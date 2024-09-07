@@ -33,6 +33,7 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
+
 urlpatterns = [
     # Your other URL patterns...
     path('admin/', admin.site.urls),  # Admin panel route
