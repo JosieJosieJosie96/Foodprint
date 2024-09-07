@@ -211,20 +211,40 @@ class SearchPage(Screen):
         self.output_label.text = f"{user_input}"
 
 # Second page (screen) for demonstration
-class SecondPage(Screen):
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.label import Label
+from kivy.uix.button import Button
+from kivy.uix.screenmanager import Screen
+
+class WelcomePage(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         
-        layout = BoxLayout(orientation='vertical')
-        layout.add_widget(Label(text="This is the second page"))
+        layout = FloatLayout()  # Use FloatLayout for precise positioning
+
+        # Create a background color
+        background = BackgroundColor(color=[0.9, 0.75, 0.9, 1], size_hint=(1, 1))
+        layout.add_widget(background)
         
+        # Add the label
+        label = Label(
+            text="Welcome Back Sam!",
+            font_size=32,
+            color=(0, 0, 0, 1),
+            size_hint=(None, None),
+            size=(self.width * 0.8, self.height * 0.1),  # Adjust size relative to the screen size
+            pos_hint={'center_x': 0.5, 'center_y': 0.8}  # Position the label higher up
+        )
+        layout.add_widget(label)
+        
+        # Add the continue button
         switch_button = Button(
-            text="Go to Home Screen",
-            size_hint=(0.3, 0.1),
+            text="Continue",
+            size_hint=(None, None),
             size=(200, 50),
-            pos_hint={'center_x': 0.5},
-            background_color =(0.8, 0.6, 0.8, 1),
-            )
+            pos_hint={'center_x': 0.5, 'center_y': 0.2},  # Position the button higher up
+            background_color=(0.8, 0.6, 0.8, 1),
+        )
         switch_button.bind(on_press=self.switch_to_home_page)
         
         layout.add_widget(switch_button)
@@ -234,15 +254,18 @@ class SecondPage(Screen):
         if self.manager:
             self.manager.current = 'home'
 
+
+
 # Screen manager to handle multiple pages
 class MyScreenManager(ScreenManager):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Add the screens to the ScreenManager
+        self.add_widget(WelcomePage(name='welcome'))
         self.add_widget(HomePage(name='home'))
         self.add_widget(QRPage(name='qr'))
         self.add_widget(SearchPage(name='search'))
-        self.add_widget(SecondPage(name='second'))
+        
 
 # Main application class
 class MyApp(App):
