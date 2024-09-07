@@ -5,3 +5,4 @@ dependencies:
       - django
       - djangorestframework
       - drf_yasg
+      - kivy
