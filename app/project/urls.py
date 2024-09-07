@@ -33,12 +33,13 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
+
 urlpatterns = [
     # Your other URL patterns...
     path('admin/', admin.site.urls),  # Admin panel route
 
     # Include your app's API routes
-    path('api/', include('app.urls')),
+    # path('api/', include('app.urls')),
     # Swagger UI:
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 

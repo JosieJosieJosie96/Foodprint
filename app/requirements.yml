@@ -1,8 +1,0 @@
-name: foodprint_conda
-dependencies:
-  - python
-  - pip:
-      - django
-      - djangorestframework
-      - drf_yasg
-      - kivy
