@@ -11,3 +11,5 @@ django-import-export==4.1.1
 requests==2.32.3
 pathlib~=1.0.1
 python-dotenv~=0.21.0
+pyzbar==0.1.9
+Pillow==9.1.0

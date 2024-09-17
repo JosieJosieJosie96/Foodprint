@@ -3,7 +3,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.contrib import admin
-
+from app.LandingPage.views import scan_dummy_qr
 
 
 schema_view = get_schema_view(
@@ -34,4 +34,6 @@ urlpatterns = [
 
     # Plain JSON and YAML endpoints:
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+
+path('scan-dummy-qr/', scan_dummy_qr, name='scan_dummy_qr')
 ]

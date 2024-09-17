@@ -4,6 +4,5 @@ from .models import Didyouknow
 
 @admin.register(Didyouknow)
 class DidYouKnowAdmin(admin.ModelAdmin):
-    list_display = ('comparison_product', 'fact', 'suggestions')
-
+    list_display = ('initial_product', 'comparison_product', 'fact', 'suggestions')
 

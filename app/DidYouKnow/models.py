@@ -8,5 +8,5 @@ class Didyouknow(models.Model):
     suggestions = models.TextField(max_length=255)
 
     def __str__(self):
-        return self.fact
+        return f'Fun Fact: {self.fact}'
 # Create your models here.
