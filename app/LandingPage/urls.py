@@ -5,6 +5,6 @@ from .views import LandingPageViewSet
 router = DefaultRouter()
 router.register(r'landingpages', LandingPageViewSet)
 
-urlpatterns = [
-    path('', include(router.urls)),
-]
+# urlpatterns = [
+#     path('', include(router.urls)),
+# ]
