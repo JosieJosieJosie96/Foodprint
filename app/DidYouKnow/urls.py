@@ -20,7 +20,7 @@ Including another URLconf
 
 
 
-urlpatterns = [
-
-]
+# urlpatterns = [
+#
+# ]
 
