@@ -1,0 +1,12 @@
+<form method="get">
+    {{ form.as_p }}  <!-- Render the form fields -->
+    <button type="submit">Search</button>
+</form>
+
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }} - {{ product.category }} - ${{ product.price }}</li>
+    {% empty %}
+        <li>No products found.</li>
+    {% endfor %}
+</ul>
