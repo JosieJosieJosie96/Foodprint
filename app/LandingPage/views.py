@@ -5,10 +5,16 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from pyzbar.pyzbar import decode
 from PIL import Image
+from .models import LandingPage
 
 class LandingPageViewSet(viewsets.ModelViewSet):
     queryset = LandingPage.objects.all()
     serializer_class = LandingPageSerializer
+
+def search_view(request):
+    query = request.GET.get('q')  # Get the 'q' parameter from the URL
+    results = LandingPage.objects.filter(name__icontains=query) if query else []
+    return render(request, 'search_results.html', {'results': results, 'query': query})
 
 
 def scan_dummy_qr(request):
