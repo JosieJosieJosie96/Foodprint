@@ -4,4 +4,4 @@ from .models import LandingPage
 class LandingPageSerializer(serializers.ModelSerializer):
     class Meta:
         model = LandingPage
-        fields = ['id', 'scan_qr', 'search_fields', 'filtering_options']
+        fields = ['id', 'search_bar']
