@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'DidYouKnow',
     'LandingPage',
+    'user'
 
 
     'rest_framework',  # Django REST Framework
@@ -124,6 +125,9 @@ REST_FRAMEWORK = {
     ],
 }
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 # CORS settings (if you want to allow all origins)
 CORS_ALLOW_ALL_ORIGINS = True
 
